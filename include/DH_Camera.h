@@ -1,8 +1,13 @@
+// Copyright (c) 2022 GMaster All rights reserved.
+// License
+// Created by whoismz on 2022-02-01.
+// Refactored by AprilNEA on 2022-10-31.
+// This is the package code for DaHeng camera
+//
 #ifndef CAMERA_DH_CAM_H
 #define CAMERA_DH_CAM_H
 
 #include"CamWrapper.h"
-#include"CamWrapperDH.h"
 #include<opencv2/opencv.hpp>
 
 using namespace std;

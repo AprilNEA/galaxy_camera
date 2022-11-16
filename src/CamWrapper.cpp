@@ -1,9 +1,15 @@
+// Copyright (c) 2022 GMaster All rights reserved.
+// License
+// Created by whoismz on 2022-02-01.
+// Refactored by AprilNEA on 2022-10-31.
+// This is the package code for DaHeng camera
+//
 #include "CamWrapper.h"
-#include "CamWrapperDH.h"
+#include "DxImageProc.h"
 //#include <glog/logging.h>
-#include <chrono>
-#include <mutex>
-#include <thread>
+#include<chrono>
+#include<mutex>
+#include<thread>
 
 void update_bool(GX_STATUS status, bool &flag, const std::string &w_str = "") {
     if (status != GX_STATUS_SUCCESS) {
@@ -17,6 +23,9 @@ void update_bool(GX_STATUS status, bool &flag, const std::string &w_str = "") {
 void ProcessData(void *pImageBuf, void *pImageRaw8Buf, void *pImageRGBBuf,
                  int nImageWidth, int nImageHeight, int nPixelFormat,
                  int nPixelColorFilter) {
+    /*！
+     *
+     */
     switch (nPixelFormat) {
 
         case GX_PIXEL_FORMAT_BAYER_GR12:
@@ -24,9 +33,10 @@ void ProcessData(void *pImageBuf, void *pImageRaw8Buf, void *pImageRGBBuf,
         case GX_PIXEL_FORMAT_BAYER_GB12:
         case GX_PIXEL_FORMAT_BAYER_BG12:
 
+            // Convert RGB48 to RGB24
             DxRaw16toRaw8(pImageBuf, pImageRaw8Buf, nImageWidth, nImageHeight,
                           DX_BIT_4_11);
-
+            // Convert Raw8 to Rgb24 with choosen RGB channel order
             DxRaw8toRGB24(pImageRaw8Buf, pImageRGBBuf, nImageWidth,
                           nImageHeight, RAW2RGB_NEIGHBOUR,
                           DX_PIXEL_COLOR_FILTER(nPixelColorFilter), false);
@@ -91,6 +101,9 @@ void ProcessData(void *pImageBuf, void *pImageRaw8Buf, void *pImageRGBBuf,
 }
 
 void GX_STDC OnFrameCallbackFun(GX_FRAME_CALLBACK_PARAM *pFrame) {
+    /*!
+     *
+     */
     if (pFrame->status == GX_FRAME_STATUS_SUCCESS) {
         DHCamera *cam = (DHCamera *) pFrame->pUserParam;
         auto start = std::chrono::steady_clock::now();
@@ -189,7 +202,6 @@ DHCamera::DHCamera(std::string sn)
           init_success(false),
           is_energy(false) {
     p_img = cv::Mat(1024, 1280, CV_8UC3);
-//    p_energy = cv::Mat(1024, 1024, CV_8UC3);
     p_energy = cv::Mat(1024, 1280, CV_8UC3);
 };
 
@@ -211,27 +223,36 @@ std::string gc_device_typename[5] = {
         "GX_DEVICE_CLASS_UNKNOWN", "GX_DEVICE_CLASS_USB2", "GX_DEVICE_CLASS_GEV",
         "GX_DEVICE_CLASS_U3V", "GX_DEVICE_CLASS_SMART"};
 
-bool DHCamera::init(int roi_x, int roi_y, int roi_w, int roi_h, float exposure,
-                    float gain, bool isEnergy) {
+bool DHCamera::init(int roi_x, int roi_y, int roi_w, int roi_h, float exposure, float gain, bool isEnergy) {
+    // 在起始位置调用 GXInitLib()进行初始化，申请资源
     GXInitLib();
+    // 更新相机列表
     GXUpdateDeviceList(&nDeviceNum, 1000);
     if (nDeviceNum >= 1) {
-        GX_DEVICE_BASE_INFO pBaseinfo[nDeviceNum];
+        // 尝试寻找对应 SN 的相机
+        // 获取设备的基础信息
+        GX_DEVICE_BASE_INFO pBaseInfo[nDeviceNum];
         size_t nSize = nDeviceNum * sizeof(GX_DEVICE_BASE_INFO);
-        status = GXGetAllDeviceBaseInfo(pBaseinfo, &nSize);
+
+        status = GXGetAllDeviceBaseInfo(pBaseInfo, &nSize);
+
         bool found_device = false;
         for (int i = 0; i < nDeviceNum; ++i) {
-            std::cout << "device: SN:" << pBaseinfo[i].szSN
-                      << " NAME:" << pBaseinfo[i].szDisplayName << " TYPE:"
-                      << gc_device_typename[pBaseinfo[i].deviceClass]
+            //
+            std::cout << "device: SN:" << pBaseInfo[i].szSN
+                      << " NAME:" << pBaseInfo[i].szDisplayName << " TYPE:"
+                      << gc_device_typename[pBaseInfo[i].deviceClass]
                       << std::endl;
-            if (std::string(pBaseinfo[i].szSN) == sn)
+            if (std::string(pBaseInfo[i].szSN) == sn) {
                 found_device = true;
+            }
         }
+
         if (!found_device) {
             std::cerr << "No device found with SN:" << sn << std::endl;
             return false;
         }
+
         GX_OPEN_PARAM stOpenParam;
         stOpenParam.accessMode = GX_ACCESS_EXCLUSIVE;
         stOpenParam.openMode = GX_OPEN_SN;
@@ -243,51 +264,49 @@ bool DHCamera::init(int roi_x, int roi_y, int roi_w, int roi_h, float exposure,
         std::cout << "DHCamera Sensor: " << g_SensorWidth << " X "
                   << g_SensorHeight << std::endl;
 
+        // 进行个性化设置
         bool set_failed = false;
+
+        // 设置感兴趣区域
         UPDB(GXSetInt(g_hDevice, GX_INT_OFFSET_X, roi_x), "ROI_X");
         UPDB(GXSetInt(g_hDevice, GX_INT_OFFSET_Y, roi_y), "ROI_Y");
         UPDB(GXSetInt(g_hDevice, GX_INT_WIDTH, roi_w), "ROI_W");
         UPDB(GXSetInt(g_hDevice, GX_INT_HEIGHT, roi_h), "ROI_H");
-        UPDB(GXSetEnum(g_hDevice, GX_ENUM_EXPOSURE_AUTO, GX_EXPOSURE_AUTO_OFF),
-             "ExposureAuto");
-        UPDB(GXSetEnum(g_hDevice, GX_ENUM_GAIN_AUTO, GX_GAIN_AUTO_OFF),
-             "GainAuto");
-        //UPDB(GXSetEnum(g_hDevice, GX_ENUM_BLACKLEVEL_AUTO,
-        //              GX_BLACKLEVEL_AUTO_OFF),
-        //    "BlacklevelAuto");
-        UPDB(GXSetEnum(g_hDevice, GX_ENUM_BALANCE_WHITE_AUTO,
-                       GX_BALANCE_WHITE_AUTO_CONTINUOUS),
-             "BalanceWhiteAuto");
+        // 曝光
+        UPDB(GXSetEnum(g_hDevice, GX_ENUM_EXPOSURE_AUTO, GX_EXPOSURE_AUTO_OFF), "ExposureAuto");
+        // 增益
+        UPDB(GXSetEnum(g_hDevice, GX_ENUM_GAIN_AUTO, GX_GAIN_AUTO_OFF), "GainAuto");
+        // 白平衡
+//        UPDB(GXSetEnum(g_hDevice, GX_ENUM_BLACKLEVEL_AUTO, GX_BLACKLEVEL_AUTO_OFF), "BlacklevelAuto");
+        UPDB(GXSetEnum(g_hDevice, GX_ENUM_BALANCE_WHITE_AUTO, GX_BALANCE_WHITE_AUTO_CONTINUOUS), "BalanceWhiteAuto");
+        // 坏点校正
+//        UPDB(GXSetEnum(g_hDevice, GX_ENUM_DEAD_PIXEL_CORRECT,GX_DEAD_PIXEL_CORRECT_OFF),"DeadPixelCorrect");
+        // 采集模式
+        UPDB(GXSetEnum(g_hDevice, GX_ENUM_ACQUISITION_MODE, GX_ACQ_MODE_CONTINUOUS), "AcquisitionMode");
+        // 采集速度级别
+//        UPDB(GXSetInt(g_hDevice, GX_INT_ACQUISITION_SPEED_LEVEL, 4),"AcquisitionSpeed");
 
-        //UPDB(GXSetEnum(g_hDevice, GX_ENUM_DEAD_PIXEL_CORRECT,
-        //              GX_DEAD_PIXEL_CORRECT_OFF),
-        //   "DeadPixelCorrect");
-
-        UPDB(GXSetEnum(g_hDevice, GX_ENUM_ACQUISITION_MODE,
-                       GX_ACQ_MODE_CONTINUOUS),
-             "AcquisitionMode");
-        //UPDB(GXSetInt(g_hDevice, GX_INT_ACQUISITION_SPEED_LEVEL, 4),
-        //    "AcquisitionSpeed");
-
-        UPDB(GXSetFloat(g_hDevice, GX_FLOAT_EXPOSURE_TIME, exposure),
-             "Exposure");
+        // 获取曝光调节范围
+        UPDB(GXSetFloat(g_hDevice, GX_FLOAT_EXPOSURE_TIME, exposure), "Exposure");
+        // 获取增益调节范围
         UPDB(GXSetFloat(g_hDevice, GX_FLOAT_GAIN, gain), "Gain");
-        //UPDB(GXSetFloat(g_hDevice, GX_FLOAT_BLACKLEVEL, 0), "Blacklevel");
-        //��������ģʽ
-        UPDB(GXSetEnum(g_hDevice, GX_ENUM_GAIN_SELECTOR, GX_GAIN_SELECTOR_ALL),
-             "GainSelector");
+        // 获取黑电平调节范围
+//        UPDB(GXSetFloat(g_hDevice, GX_FLOAT_BLACKLEVEL, 0), "Blacklevel");
+        // 增益通道选择
+        UPDB(GXSetEnum(g_hDevice, GX_ENUM_GAIN_SELECTOR, GX_GAIN_SELECTOR_ALL), "GainSelector");
 
         if (set_failed) {
 //            LOG(ERROR) << "failed to set some parameters!";
             return false;
         }
 
-        //��ȡʵ�����淶Χ
+        // 获取白平衡调节范围
         GX_FLOAT_RANGE gainRange;
         GXGetFloatRange(g_hDevice, GX_FLOAT_GAIN, &gainRange);
         std::cout << "DHCamera Gain Range: " << gainRange.dMin << "~"
                   << gainRange.dMax << " step size:" << gainRange.dInc
                   << std::endl;
+        // 传输层控制
         GXGetInt(g_hDevice, GX_INT_PAYLOAD_SIZE, &nPayLoadSize);
 
         g_frameData.pImgBuf = malloc(nPayLoadSize);

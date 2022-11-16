@@ -26,10 +26,9 @@ add_executable(
         DH_camera_read
         src/CamWrapper.cpp
         include/CamWrapper.h
-        include/CamWrapperDH.h
         include/DxImageProc.h
         include/GxIAPI.h
-        src/DH_CAM.cpp include/DH_CAM.h)
+        src/DH_Camera.cpp include/DH_Camera.h)
 
 target_link_libraries(
         DH_camera_read
