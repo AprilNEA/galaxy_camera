@@ -12,6 +12,10 @@
 #include<thread>
 #include<opencv2/opencv.hpp>
 
+/**
+ * @brief 相机的父类
+ * 为后期拓展相机做准备
+*/
 class Camera {
 public:
     virtual bool init(int roi_x, int roi_y, int roi_w, int roi_h,
@@ -30,7 +34,7 @@ public:
 
 
 class DHCamera : public Camera {
-    friend void getRGBImage(DHCamera *p_cam);
+    friend void getRGBImage(DHCamera *camera);
 
     friend void GX_STDC OnFrameCallbackFun(GX_FRAME_CALLBACK_PARAM *pFrame);
 
@@ -42,7 +46,7 @@ public:
     bool init(int roi_x, int roi_y, int roi_w, int roi_h, float exposure,
               float gain, bool isEnergy)
     final;  // camInit camera lib and do settings, be called firstly
-    void setParam(float exposure, float gain) final;  // set exposure and gain
+//    void setParam(float exposure, float gain) final;  // set exposure and gain
     bool start() final;                    // start video stream
     void stop() final;                     // stop receiving frames
     void calcRoi();                        // autmatic resize parameters
@@ -50,7 +54,7 @@ public:
     bool read(cv::Mat &src) final;
 
 private:
-    std::string sn;
+    std::string sn; // 相机的序列号
     GX_STATUS status;
 
     int64_t nPayLoadSize;
