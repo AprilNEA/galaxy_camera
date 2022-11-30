@@ -39,12 +39,12 @@ add_executable(
         include/GxIAPI.h
         src/DH_Camera.cpp include/DH_Camera.h)
 
-#target_link_libraries(
-#        DH_camera_read
-#        ${OpenCV_LIBRARIES}
-#        -lglog
-#        -lgxiapi
-#)
+target_link_libraries(
+        DH_camera_read
+        ${OpenCV_LIBRARIES}
+        -lglog
+        -lgxiapi
+)
 
 add_executable(main main.cpp)
 target_link_libraries(main -lgxiapi)

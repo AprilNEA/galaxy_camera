@@ -101,12 +101,17 @@ void ProcessData(void *pImageBuf, void *pImageRaw8Buf, void *pImageRGBBuf,
     }
 }
 
+/*!
+ *
+ * @param pFrame
+ */
 void GX_STDC OnFrameCallbackFun(GX_FRAME_CALLBACK_PARAM *pFrame) {
     /*!
      *
      */
     if (pFrame->status == GX_FRAME_STATUS_SUCCESS) {
         DHCamera *camera = (DHCamera *) pFrame->pUserParam;
+        // 开始计时
         auto start = std::chrono::steady_clock::now();
 
         ProcessData((void *) pFrame->pImgBuf, camera->g_pRaw8Buffer,
@@ -120,8 +125,9 @@ void GX_STDC OnFrameCallbackFun(GX_FRAME_CALLBACK_PARAM *pFrame) {
         // cv::cuda::cvtColor(camera->resize_gpu,camera->resize_gpu,cv::COLOR_RGB2BGR);
 
         if (camera->is_energy) {
-            memcpy(camera->p_energy.data, camera->g_pRGBframeData,
-                   3 * (camera->nPayLoadSize));
+            memcpy(camera->p_energy.data, camera->g_pRGBframeData, 3 * (camera->nPayLoadSize));
+
+            // 互斥锁
             camera->pimg_lock.lock();
 
             cv::resize(camera->p_energy, camera->p_img, cv::Size(1280, 1024),
@@ -134,14 +140,17 @@ void GX_STDC OnFrameCallbackFun(GX_FRAME_CALLBACK_PARAM *pFrame) {
             // cv::resize(camera->full,camera->p_img,cv::Size(640,640),cv::INTER_NEAREST);
             // cv::cvtColor(camera->p_img,camera->p_img,cv::COLOR_RGB2BGR);
             // camera->resize_gpu.download(camera->p_img);
-            memcpy(camera->p_img.data, camera->g_pRGBframeData,
-                   3 * (camera->nPayLoadSize));
+            memcpy(camera->p_img.data, camera->g_pRGBframeData, 3 * (camera->nPayLoadSize));
 
             cv::cvtColor(camera->p_img, camera->p_img, cv::COLOR_RGB2BGR);
 
             camera->pimg_lock.unlock();
         }
+
+        // 结束计时
         auto end = std::chrono::steady_clock::now();
+
+        // 计算总帧数 总时间
         camera->frame_cnt++;
         camera->frame_get_time += std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
@@ -181,18 +190,20 @@ void getRGBImage(DHCamera *camera) {
         if (camera->is_energy) {
             // LOG(INFO) << camera->g_frameBuffer->nWidth << " " <<
             // camera->g_frameBuffer->nHeight << " " << camera->nPayLoadSize;
-            memcpy(camera->p_energy.data, camera->g_pRGBframeData,
-                   3 * (camera->nPayLoadSize));
+            memcpy(camera->p_energy.data, camera->g_pRGBframeData, 3 * (camera->nPayLoadSize));
+
             camera->pimg_lock.lock();
-            cv::resize(camera->p_energy, camera->p_img, cv::Size(1280, 1024),
-                       cv::INTER_NEAREST);
+
+            cv::resize(camera->p_energy, camera->p_img, cv::Size(1280, 1024), cv::INTER_NEAREST);
             cv::cvtColor(camera->p_img, camera->p_img, cv::COLOR_RGB2BGR);
+
             camera->pimg_lock.unlock();
         } else {
             camera->pimg_lock.lock();
-            memcpy(camera->p_img.data, camera->g_pRGBframeData,
-                   3 * (camera->nPayLoadSize));
+
+            memcpy(camera->p_img.data, camera->g_pRGBframeData,3 * (camera->nPayLoadSize));
             cv::cvtColor(camera->p_img, camera->p_img, cv::COLOR_RGB2BGR);
+
             camera->pimg_lock.unlock();
         }
         GXQBuf(camera->g_hDevice, camera->g_frameBuffer);
@@ -243,6 +254,7 @@ bool DHCamera::init(int roi_x, int roi_y, int roi_w, int roi_h, float exposure, 
     GXInitLib();
     // 更新相机列表
     GXUpdateDeviceList(&nDeviceNum, 1000);
+
     if (nDeviceNum >= 1) {
         // 尝试寻找对应 SN 的相机
         // 获取设备的基础信息
@@ -293,7 +305,8 @@ bool DHCamera::init(int roi_x, int roi_y, int roi_w, int roi_h, float exposure, 
         SET_PARAM(GXSetEnum(g_hDevice, GX_ENUM_GAIN_AUTO, GX_GAIN_AUTO_OFF), "GainAuto");
         // 白平衡
 //        SET_PARAM(GXSetEnum(g_hDevice, GX_ENUM_BLACKLEVEL_AUTO, GX_BLACKLEVEL_AUTO_OFF), "BlacklevelAuto");
-        SET_PARAM(GXSetEnum(g_hDevice, GX_ENUM_BALANCE_WHITE_AUTO, GX_BALANCE_WHITE_AUTO_CONTINUOUS), "BalanceWhiteAuto");
+        SET_PARAM(GXSetEnum(g_hDevice, GX_ENUM_BALANCE_WHITE_AUTO, GX_BALANCE_WHITE_AUTO_CONTINUOUS),
+                  "BalanceWhiteAuto");
         // 坏点校正
 //        SET_PARAM(GXSetEnum(g_hDevice, GX_ENUM_DEAD_PIXEL_CORRECT,GX_DEAD_PIXEL_CORRECT_OFF),"DeadPixelCorrect");
         // 采集模式
