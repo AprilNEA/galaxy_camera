@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "image_transport_tutorials__py",
+		"source" : "cmake-build-debug/image_transport_tutorials__py"
+	}
+}

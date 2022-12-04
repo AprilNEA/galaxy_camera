@@ -1,0 +1,58 @@
+[0.000000] (-) TimerEvent: {}
+[0.003353] (image_transport_tutorials) JobQueued: {'identifier': 'image_transport_tutorials', 'dependencies': OrderedDict()}
+[0.003457] (image_transport_tutorials) JobStarted: {'identifier': 'image_transport_tutorials'}
+[0.061051] (image_transport_tutorials) JobProgress: {'identifier': 'image_transport_tutorials', 'progress': 'cmake'}
+[0.061843] (image_transport_tutorials) Command: {'cmd': ['/usr/bin/cmake', '/home/xuan/ros2_ws/src/image_transport_tutorials', '-DCMAKE_INSTALL_PREFIX=/home/xuan/ros2_ws/src/image_transport_tutorials/install/image_transport_tutorials'], 'cwd': '/home/xuan/ros2_ws/src/image_transport_tutorials/build/image_transport_tutorials', 'env': OrderedDict([('SHELL', '/usr/bin/zsh'), ('ROS_VERSION', '2'), ('SESSION_MANAGER', 'local/aprilarch:@/tmp/.ICE-unix/549,unix/aprilarch:/tmp/.ICE-unix/549'), ('WINDOWID', '52428813'), ('QT_SCREEN_SCALE_FACTORS', 'eDP-1=2;DP-1=2;HDMI-1=2;DP-2=2;HDMI-2=2;'), ('COLORTERM', 'truecolor'), ('XDG_CONFIG_DIRS', '/home/xuan/.config/kdedefaults:/etc/xdg'), ('GDK_DPI_SCALE', '0.5'), ('GREP_COLOR', '37;45'), ('XDG_SESSION_PATH', '/org/freedesktop/DisplayManager/Session0'), ('PKG_CONFIG_PATH', '/opt/ros/humble/lib/pkgconfig'), ('ROS_PYTHON_VERSION', '3'), ('SDL_IM_MOUDLE', 'fcitx'), ('LANGUAGE', ''), ('_P9K_TTY', '/dev/pts/2'), ('LESS_TERMCAP_se', '\x1b[27m'), ('LESS_TERMCAP_so', '\x1b[7m'), ('P9K_TTY', 'old'), ('INPUT_METHOD', 'fcitx'), ('SHELL_SESSION_ID', '0b90a7768bfe452c8a4862cc36464ae0'), ('XMODIFIERS', '\\@im=fcitx'), ('DESKTOP_SESSION', 'plasma'), ('GTK_RC_FILES', '/etc/gtk/gtkrc:/home/xuan/.gtkrc:/home/xuan/.config/gtkrc'), ('GREP_COLORS', 'mt=37;45'), ('XCURSOR_SIZE', '24'), ('EDITOR', 'vim'), ('GTK_MODULES', 'canberra-gtk-module'), ('XDG_SEAT', 'seat0'), ('PWD', '/home/xuan/ros2_ws/src/image_transport_tutorials/build/image_transport_tutorials'), ('XDG_SESSION_DESKTOP', 'KDE'), ('LOGNAME', 'xuan'), ('XDG_SESSION_TYPE', 'x11'), ('ROS_DOMAIN_ID', '42'), ('SYSTEMD_EXEC_PID', '603'), ('XAUTHORITY', '/home/xuan/.Xauthority'), ('MOTD_SHOWN', 'pam'), ('GTK2_RC_FILES', '/etc/gtk-2.0/gtkrc:/home/xuan/.gtkrc-2.0:/home/xuan/.config/gtkrc-2.0'), ('HOME', '/home/xuan'), ('AUTOJUMP_ERROR_PATH', '/home/xuan/.local/share/autojump/errors.log'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'di=1;34:ln=35:so=32:pi=33:ex=31:bd=1;36:cd=1;33:su=30;41:sg=30;46:tw=30;42:ow=30;43'), ('XDG_CURRENT_DESKTOP', 'KDE'), ('KONSOLE_DBUS_SERVICE', ':1.175'), ('KONSOLE_DBUS_SESSION', '/Sessions/1'), ('PROFILEHOME', ''), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble'), ('XDG_SEAT_PATH', '/org/freedesktop/DisplayManager/Seat0'), ('https_proxy', 'http://127.0.0.1:7890'), ('COLCON_PREFIX_PATH', '/opt/ros/humble'), ('INVOCATION_ID', '6efcb2fb23294a588e248d9a4f4d11f0'), ('KONSOLE_VERSION', '220803'), ('MANAGERPID', '478'), ('KDE_SESSION_UID', '1000'), ('XDG_SESSION_CLASS', 'user'), ('PYTHONPATH', '/home/xuan/.cache/yay/ros2-humble/src/install/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESS_TERMCAP_mb', '\x1b[1;31m'), ('LESS_TERMCAP_me', '\x1b[0m'), ('LESS_TERMCAP_md', '\x1b[1;31m'), ('USER', 'xuan'), ('COLORFGBG', '15;0'), ('KDE_SESSION_VERSION', '5'), ('PAM_KWALLET5_LOGIN', '/run/user/1000/kwallet5.socket'), ('AUTOJUMP_SOURCED', '1'), ('DISPLAY', ':0'), ('LESS_TERMCAP_ue', '\x1b[0m'), ('SHLVL', '1'), ('LESS_TERMCAP_us', '\x1b[1;32m'), ('PAGER', 'less'), ('XDG_VTNR', '1'), ('QT_IM_MOUDLE', 'fcitx'), ('XDG_SESSION_ID', '1'), ('http_proxy', 'http://127.0.0.1:7890'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/yaml_cpp_vendor/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('ROS_LOCALHOST_ONLY', '0'), ('GTK_IM_MOUDLE', 'fcitx'), ('P9K_SSH', '0'), ('QT_AUTO_SCREEN_SCALE_FACTOR', '0'), ('JOURNAL_STREAM', '8:16733'), ('XCURSOR_THEME', 'breeze_cursors'), ('GTK3_MODULES', 'xapp-gtk3-module'), ('KDE_FULL_SESSION', 'true'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl'), ('GDK_SCALE', '2'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('KDE_APPLICATIONS_AS_SCOPE', '1'), ('MAIL', '/var/spool/mail/xuan'), ('ROS_DISTRO', 'humble'), ('OLDPWD', '/home/xuan/ros2_ws/src'), ('KONSOLE_DBUS_WINDOW', '/Windows/1'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.100635] (-) TimerEvent: {}
+[0.201967] (-) TimerEvent: {}
+[0.245434] (image_transport_tutorials) StdoutLine: {'line': b'-- The C compiler identification is GNU 12.2.0\n'}
+[0.302052] (-) TimerEvent: {}
+[0.402358] (-) TimerEvent: {}
+[0.420757] (image_transport_tutorials) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 12.2.0\n'}
+[0.442812] (image_transport_tutorials) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.502484] (-) TimerEvent: {}
+[0.537820] (image_transport_tutorials) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.545683] (image_transport_tutorials) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.546131] (image_transport_tutorials) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.547004] (image_transport_tutorials) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.550887] (image_transport_tutorials) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.602586] (-) TimerEvent: {}
+[0.679296] (image_transport_tutorials) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.687270] (image_transport_tutorials) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.687641] (image_transport_tutorials) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.688241] (image_transport_tutorials) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.698195] (image_transport_tutorials) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.2 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.702704] (-) TimerEvent: {}
+[0.803093] (-) TimerEvent: {}
+[0.903437] (-) TimerEvent: {}
+[1.005755] (-) TimerEvent: {}
+[1.106338] (-) TimerEvent: {}
+[1.206703] (-) TimerEvent: {}
+[1.307197] (-) TimerEvent: {}
+[1.407518] (-) TimerEvent: {}
+[1.507858] (-) TimerEvent: {}
+[1.596081] (image_transport_tutorials) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.8") found components: Interpreter \n'}
+[1.607967] (-) TimerEvent: {}
+[1.708314] (-) TimerEvent: {}
+[1.723393] (image_transport_tutorials) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:14 (find_package):\n'}
+[1.723661] (image_transport_tutorials) StderrLine: {'line': b'  By not providing "Findcv_bridge.cmake" in CMAKE_MODULE_PATH this project\n'}
+[1.723760] (image_transport_tutorials) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[1.723844] (image_transport_tutorials) StderrLine: {'line': b'  "cv_bridge", but CMake did not find one.\n'}
+[1.723924] (image_transport_tutorials) StderrLine: {'line': b'\n'}
+[1.724002] (image_transport_tutorials) StderrLine: {'line': b'  Could not find a package configuration file provided by "cv_bridge" with\n'}
+[1.724079] (image_transport_tutorials) StderrLine: {'line': b'  any of the following names:\n'}
+[1.724155] (image_transport_tutorials) StderrLine: {'line': b'\n'}
+[1.724230] (image_transport_tutorials) StderrLine: {'line': b'    cv_bridgeConfig.cmake\n'}
+[1.724305] (image_transport_tutorials) StderrLine: {'line': b'    cv_bridge-config.cmake\n'}
+[1.724380] (image_transport_tutorials) StderrLine: {'line': b'\n'}
+[1.724454] (image_transport_tutorials) StderrLine: {'line': b'  Add the installation prefix of "cv_bridge" to CMAKE_PREFIX_PATH or set\n'}
+[1.724531] (image_transport_tutorials) StderrLine: {'line': b'  "cv_bridge_DIR" to a directory containing one of the above files.  If\n'}
+[1.724607] (image_transport_tutorials) StderrLine: {'line': b'  "cv_bridge" provides a separate development package or SDK, be sure it has\n'}
+[1.724683] (image_transport_tutorials) StderrLine: {'line': b'  been installed.\n'}
+[1.724761] (image_transport_tutorials) StderrLine: {'line': b'\n'}
+[1.724849] (image_transport_tutorials) StderrLine: {'line': b'\x1b[0m\n'}
+[1.724927] (image_transport_tutorials) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[1.725011] (image_transport_tutorials) StdoutLine: {'line': b'See also "/home/xuan/ros2_ws/src/image_transport_tutorials/build/image_transport_tutorials/CMakeFiles/CMakeOutput.log".\n'}
+[1.728417] (image_transport_tutorials) CommandEnded: {'returncode': 1}
+[1.787710] (image_transport_tutorials) JobEnded: {'identifier': 'image_transport_tutorials', 'rc': 1}
+[1.798324] (-) EventReactorShutdown: {}

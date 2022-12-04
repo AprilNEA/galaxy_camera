@@ -1,0 +1,251 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-cf008376d2f8c076939d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19
+					]
+				},
+				{
+					"build" : "image_transport_tutorials__py",
+					"jsonFile" : "directory-image_transport_tutorials__py-Debug-c17ad67b9d1f401ee6d1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "cmake-build-debug/image_transport_tutorials__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "image_transport_tutorials",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_image_transport_tutorials_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_image_transport_tutorials_egg-Debug-95810f27a83caa21d996.json",
+					"name" : "ament_cmake_python_build_image_transport_tutorials_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_image_transport_tutorials::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_image_transport_tutorials-Debug-d3d4dd9e3732f53c199b.json",
+					"name" : "ament_cmake_python_copy_image_transport_tutorials",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials-Debug-35565c1299566d37861a.json",
+					"name" : "image_transport_tutorials",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__cpp-Debug-f0c949a0ad993617c7a7.json",
+					"name" : "image_transport_tutorials__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "image_transport_tutorials__py::@4c6fa40544458b72e543",
+					"jsonFile" : "target-image_transport_tutorials__py-Debug-c0f5191a42374b0c361a.json",
+					"name" : "image_transport_tutorials__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_generator_c-Debug-f940bc0e486122f5bf54.json",
+					"name" : "image_transport_tutorials__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_generator_py-Debug-91c1738c44057a2b4df8.json",
+					"name" : "image_transport_tutorials__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_typesupport_c-Debug-a878e20e2c850c440ed8.json",
+					"name" : "image_transport_tutorials__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_typesupport_c__pyext-Debug-5f4cd68e9ec3b1066ecf.json",
+					"name" : "image_transport_tutorials__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_typesupport_cpp-Debug-c9ea03777b5cb52ab2bd.json",
+					"name" : "image_transport_tutorials__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_typesupport_fastrtps_c-Debug-c4039efa129517137b4b.json",
+					"name" : "image_transport_tutorials__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_typesupport_fastrtps_c__pyext-Debug-504bab844f4b74537776.json",
+					"name" : "image_transport_tutorials__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_typesupport_fastrtps_cpp-Debug-cb406bbcf1e1ed9b2cdd.json",
+					"name" : "image_transport_tutorials__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_typesupport_introspection_c-Debug-61151f9ecb71ad6ad606.json",
+					"name" : "image_transport_tutorials__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_typesupport_introspection_c__pyext-Debug-8f400fb631c168788c65.json",
+					"name" : "image_transport_tutorials__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials__rosidl_typesupport_introspection_cpp-Debug-40f8cd18e43d96cff787.json",
+					"name" : "image_transport_tutorials__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "image_transport_tutorials_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-image_transport_tutorials_uninstall-Debug-561e422bb08dc11eeb9f.json",
+					"name" : "image_transport_tutorials_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "my_subscriber::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-my_subscriber-Debug-4c16de8a956eb719698d.json",
+					"name" : "my_subscriber",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "publisher_from_video::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-publisher_from_video-Debug-95bbae1bc9730dbbccd6.json",
+					"name" : "publisher_from_video",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Debug-dd0a3725596313f11fe3.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/xuan/ros2_ws/src/image_transport_tutorials/cmake-build-debug",
+		"source" : "/home/xuan/ros2_ws/src/image_transport_tutorials"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
