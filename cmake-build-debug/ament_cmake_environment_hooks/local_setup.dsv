@@ -1,4 +1,0 @@
-source;share/image_transport_tutorials/environment/ament_prefix_path.sh
-source;share/image_transport_tutorials/environment/library_path.sh
-source;share/image_transport_tutorials/environment/path.sh
-source;share/image_transport_tutorials/environment/pythonpath.sh

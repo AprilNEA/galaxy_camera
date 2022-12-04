@@ -1,6 +1,0 @@
-{
-  "package_name": "image_transport_tutorials",
-  "non_idl_tuples": [
-    "/home/xuan/ros2_ws/src/image_transport_tutorials:msg/ResizedImage.msg"
-  ]
-}
