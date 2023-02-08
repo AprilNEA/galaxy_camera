@@ -1,8 +1,8 @@
 <package format="3">
   <name>galaxy_camera</name>
   <version>0.1.0</version>
-  <description>galaxy camera ros2 package</description>
-  <author>Vincent Rabaud</author>
+  <description>ROS wrapper for the galaxy camera made by Daheng Imaging.</description>
+  <author>ApirlNEA</author>
   <maintainer email="aprilforpub@gmail.com">ApirlNEA</maintainer>
   <license>Not Open Source at this time</license>
 
